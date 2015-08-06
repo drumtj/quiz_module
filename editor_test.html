@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> 웹 퀴즈 모듈 테스트 </title>
+
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="libs/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="libs/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+<style>
+body{
+	padding:0;
+	margin:0;
+	background-color:#383838;
+}
+#container{
+	width:1280px;
+	padding: 0;
+}
+
+#toolbar{
+	margin: 0;
+	padding: 0;
+	width: 1280px;
+	height: 49px;
+	float:left;
+}
+#content{
+	padding: 0;
+	margin: 0;
+	width: 1024px;
+	height: 768px;
+	overflow-y: auto;
+	background-color:#fff;
+	display:inline-block;
+	float:left;
+}
+#sidebar{
+	display:inline-block;
+	margin: 0;
+	width: 256px;
+	height: 768px;
+	border: solid 1px #1a1a1a;
+	background-color: #424242;
+}
+.kit-select, .kit-multiSelect{
+	width: 300px;
+	margin:10px;
+	border:solid 1px #666666;
+}
+</style>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="libs/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="libs/sg/sg-1.1.js"></script>
+
+
+<script>
+var kits = [];
+
+$(document).ready(function(e) {
+	
+	//var selectKit = new sg.kit.SingleSelect( $(".kit-select") );
+	
+	$(".kit-select").each(function(i,e){
+		kits.push( new sg.kit.SingleSelect( e ) );
+	});
+	
+	$(".kit-multiSelect").each(function(i,e){
+		kits.push( new sg.kit.MultiSelect( e, {activeClass:"list-group-item-success"} ) );
+	});
+	
+});
+
+
+
+function kit_reset(){
+	$(kits).each(function( i, item ){
+		item.reset();
+	});
+}
+
+function kit_enable(){
+	$(kits).each(function( i, item ){
+		item.enable();
+	});
+}
+
+function kit_disable(){
+	$(kits).each(function( i, item ){
+		item.disable();
+	});
+}
+
+function kit_getAnswer(){
+	var arr = [];
+	$(kits).each(function( i, item ){
+		arr.push( item.getAnswer() );
+	});
+	alert( arr.join('\n') );
+}
+
+</script>
+</head>
+
+<body>
+	<div id="container" class="center-block">
+    	<div id="toolbar">
+            <nav class="navbar navbar-inverse navbar-static-top" role="navigation" style>
+            	<div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                      <a class="navbar-brand" href="#">SG</a>
+                      <ul class="nav navbar-nav">
+                        <li><a href="#" onclick="kit_reset();">Reset</a></li>
+                        <li><a href="#" onclick="kit_enable();">Enable</a></li>
+                        <li><a href="#" onclick="kit_disable();">Disable</a></li>
+                        <li><a href="#" onclick="kit_getAnswer();">GetAnswer</a></li>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">One more separated link</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+
+                    </div>
+              	</div>
+            </nav>
+        </div>
+        
+        
+        <div id="content">
+        
+        	<div class="panel panel-default">
+              <div class="panel-heading"> 한가지만 선택해요</div>
+              <div class="panel-body">
+                <div class="kit-select list-group">
+                    <a href="#" id="p1" class="list-group-item">aaaaa</a>
+                    <a href="#" id="p2" class="list-group-item">aaaaa</a>
+                    <a href="#" id="p4" class="list-group-item">aaaaa</a>
+                    <a href="#" id="p3" class="list-group-item">aaaaa</a>
+                </div>
+              </div>
+            </div>
+        	
+            
+            <div class="panel panel-default">
+              <div class="panel-heading"> 한가지만 선택해요</div>
+              <div class="panel-body">
+                <div class="kit-select list-group">
+                    <a href="#" id="p1" class="list-group-item">aaaaa</a>
+                    <a href="#" id="p2" class="list-group-item">aaaaa</a>
+                    <a href="#" id="p4" class="list-group-item">aaaaa</a>
+                    <a href="#" id="p3" class="list-group-item">aaaaa</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="panel panel-default">
+              <div class="panel-heading"> 여러가지 선택해요 </div>
+              <div class="panel-body">
+                <div class="kit-multiSelect list-group">
+                    <a href="#" id="p1" class="list-group-item">aaaaa</a>
+                    <a href="#" id="p2" class="list-group-item">aaaaa</a>
+                    <a href="#" id="p4" class="list-group-item">aaaaa</a>
+                    <a href="#" id="p3" class="list-group-item">aaaaa</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="panel panel-default">
+              <div class="panel-heading"> 여러가지 선택해요</div>
+              <div class="panel-body">
+                <div class="kit-multiSelect list-group">
+                    <a href="#" id="p1" class="list-group-item">aaaaa</a>
+                    <a href="#" id="p2" class="list-group-item">aaaaa</a>
+                    <a href="#" id="p4" class="list-group-item">aaaaa</a>
+                    <a href="#" id="p3" class="list-group-item">aaaaa</a>
+                </div>
+              </div>
+            </div>
+        	
+            
+        </div><!--//end content-->
+        
+        
+        <div id="sidebar">
+        </div>
+    </div>
+</body>
+</html>
